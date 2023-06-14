@@ -3,6 +3,8 @@
     // Represents the player in the game.
     public class Hero
     {
+        //The default constructor places the Hero at Location (0,0)
+        public Hero() : this(new Location(0, 0)) { }
         // Creates a new player that starts at the given location.
         public Hero(Location start) => Location = start;
         // Contains all the commands that a player can access.
@@ -25,6 +27,9 @@
 
         // Indicates whether the player currently has the sword.
         public bool HasSword { get; set; }
+
+        // Indicates whether the player currently has the chest.
+        public bool HasChest { get; set; }
 
         // Explains why a player died.
         public string CauseOfDeath { get; private set; } = "";
