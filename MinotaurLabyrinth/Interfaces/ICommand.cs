@@ -18,6 +18,23 @@
         }
     }
 
+    public class OpenChestCommand : ISecretCommand
+    {
+        public void Execute(Hero hero, Map map)
+        {
+            if (map.GetRoomTypeAtLocation(hero.Location) == RoomType.Chest)
+            {
+                System.Console.WriteLine("You managed to opem the chest! You find a strong sturdy shield");
+                hero.HasShield = true;
+                hero.CommandList.RemoveCommand(typeof(OpenChestCommand));
+            }
+            else
+            {
+                System.Console.WriteLine("There is no chest");
+            }
+        }
+    }
+
     // Represents a movement command, along with a specific direction to move.
     public abstract class BaseMoveCommand : ICommand
     {

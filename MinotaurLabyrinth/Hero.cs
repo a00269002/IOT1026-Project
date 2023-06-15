@@ -31,6 +31,8 @@
         // Indicates whether the player currently has the chest.
         public bool HasChest { get; set; }
 
+        public bool HasShield { get; set; }
+
         // Explains why a player died.
         public string CauseOfDeath { get; private set; } = "";
 
