@@ -7,9 +7,9 @@ namespace MinotaurLabyrinthTest
         [TestMethod]
         public void PitRoomTest()
         {
-            Pit pitRoom = new Pit();
-            Hero hero = new Hero();
-            Map map = new Map(1, 1);
+            Pit pitRoom = new();
+            Hero hero = new();
+            Map map = new(1, 1);
             pitRoom.Activate(hero, map);
             Assert.AreEqual(pitRoom.IsActive, false);
             Assert.AreEqual(hero.IsAlive, true);
@@ -19,7 +19,7 @@ namespace MinotaurLabyrinthTest
             // Hero should not die because pitRoom is inactive here
             Assert.AreEqual(hero.IsAlive, true);
 
-            Pit newPitRoom = new Pit();
+            Pit newPitRoom = new();
             newPitRoom.Activate(hero, map);
             Assert.AreEqual(hero.IsAlive, false);
         }
