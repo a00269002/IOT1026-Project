@@ -1,4 +1,4 @@
-namespace MinotaurLabyrinth
+﻿namespace MinotaurLabyrinth
 {
     // Make your own unique and fun/creative room! There will be lots of marks for creativity if you aren't able to get your head around
     // how to program something extravagent.
