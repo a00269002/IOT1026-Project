@@ -20,7 +20,7 @@ namespace MinotaurLabyrinth
         {
             if (IsActive)
             {
-                Console.WriteLine("Open your eyes! Chest room is active!!!");
+                Console.WriteLine("Open your eyes! Chest room is active!!");
                 hero.CommandList.AddCommand(new List<string>() { "open" }, new OpenChestCommand());
                 IsActive = false;
             }
