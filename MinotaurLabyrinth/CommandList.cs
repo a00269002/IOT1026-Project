@@ -20,6 +20,7 @@ namespace MinotaurLabyrinth
             AddCommand(new List<string>() { "g", "grab sword" }, new GetSwordCommand());
             AddCommand(new List<string>() { "q", "quit" }, new QuitCommand());
             AddCommand(new List<string>() { "secret" }, new SecretCommand());
+            AddCommand(new List<string>() { "c", "grab chest" }, new GetChestCommand());
             AddCommand(new List<string>() { "d", "debug" }, new DebugMapCommand());
         }
 

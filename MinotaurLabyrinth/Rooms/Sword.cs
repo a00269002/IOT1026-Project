@@ -9,7 +9,7 @@
         public override RoomType Type { get; } = RoomType.Sword;
         public override DisplayDetails Display()
         {
-            return new DisplayDetails($"[{Type.ToString()[0]}]", ConsoleColor.Yellow);
+            return new DisplayDetails($"[{Type.ToString()[0]}]", ConsoleColor.Cyan);
         }
 
         public override bool DisplaySense(Hero hero, int heroDistance)

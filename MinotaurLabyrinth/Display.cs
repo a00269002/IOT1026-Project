@@ -25,6 +25,9 @@
                 ConsoleHelper.WriteLine("You sense nothing of interest nearby.", ConsoleColor.Gray);
             if (hero.HasSword)
                 ConsoleHelper.WriteLine("You are currently carrying the sword! Make haste for the exit!", ConsoleColor.DarkYellow);
+            if (hero.HasChest)
+                ConsoleHelper.WriteLine("You are currently carrying the chest! Open it! You only have one opportunity to do it", ConsoleColor.DarkYellow);
+                hero.HasChest = false;
         }
 
         // Asks each sense to display itself if relevant. Returns true if something is sensed and false otherwise.

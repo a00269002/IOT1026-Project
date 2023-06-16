@@ -24,7 +24,6 @@
         {
             if (map.GetRoomTypeAtLocation(hero.Location) == RoomType.Chest)
             {
-                System.Console.WriteLine("You managed to opem the chest! You find a strong sturdy shield");
                 hero.HasShield = true;
                 hero.CommandList.RemoveCommand(typeof(OpenChestCommand));
             }
@@ -102,7 +101,26 @@
             }
         }
     }
-
+    // A command that represents a request to pick up the chest.
+    public class GetChestCommand : ICommand
+    {
+        // Retrieves the chest if the player is in the room with the chest. Otherwise, nothing happens.
+        public void Execute(Hero hero, Map map)
+        {
+            if (map.GetRoomTypeAtLocation(hero.Location) == RoomType.Chest)
+            {
+                if (hero.HasChest)
+                {
+                    ConsoleHelper.WriteLine("You've already picked up the chest from this room.", ConsoleColor.Red);
+                }
+                hero.HasChest = true;
+            }
+            else
+            {
+                ConsoleHelper.WriteLine("The chest is not in this room. There was no effect.", ConsoleColor.Red);
+            }
+        }
+    }
     // Displays all the room occurrences - for debugging and testing
     public class DebugMapCommand : ICommand
     {

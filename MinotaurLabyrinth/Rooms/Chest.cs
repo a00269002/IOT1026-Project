@@ -16,33 +16,59 @@
         public override RoomType Type { get; } = RoomType.Chest;
         /// <inheritdoc/>
         public override bool IsActive { get; protected set; } = true;
+
+        public bool UserEnterAtRoom { get; protected set; }
         public override void Activate(Hero hero, Map map)
         {
             if (IsActive)
             {
-                Console.WriteLine("Open your eyes! Chest room is active!!");
-                hero.CommandList.AddCommand(new List<string>() { "open" }, new OpenChestCommand());
-                IsActive = false;
+                hero.CommandList.AddCommand(new List<string>() { "c" }, new GetChestCommand());
+                if (hero.HasChest)
+                {
+                    hero.CommandList.AddCommand(new List<string>() { "open" }, new OpenChestCommand());
+                    IsActive = false;
+                }
+                else
+                {
+                    //ConsoleHelper.WriteLine("Your lost the opportunity to catch the chest!", ConsoleColor.Red);
+                }
             }
         }
         /// <inheritdoc/>
         public override DisplayDetails Display()
         {
-            return IsActive ? new DisplayDetails($"[{Type.ToString()[0]}]", ConsoleColor.Red)
+            return IsActive ? new DisplayDetails($"[{Type.ToString()[0]}]", ConsoleColor.Cyan)
                    : base.Display();
         }
         public override bool DisplaySense(Hero hero, int heroDistance)
         {
             if (heroDistance == 0)
             {
-                if (hero.HasChest) ConsoleHelper.WriteLine("This is the chest room but you've already picked up the chest!", ConsoleColor.DarkCyan);
-                else ConsoleHelper.WriteLine("You can sense that the chest is nearby!", ConsoleColor.DarkCyan);
+                UserEnterAtRoom = true;
+                if (hero.HasShield)
+                {
+                    ConsoleHelper.WriteLine("Chest open successfully!!!", ConsoleColor.Green);
+                    Console.WriteLine("You managed to open the chest! You find a strong sturdy shield");
+                }
+                else
+                {
+                    ConsoleHelper.WriteLine("You should pick the chest! Don't lost your opportunity", ConsoleColor.DarkCyan);
+                }
                 return true;
             }
             else if (heroDistance == 1)
             {
-                ConsoleHelper.WriteLine("Look carfully and use all your senses the chest is nearby!", ConsoleColor.DarkCyan);
-                return true;
+                if (IsActive)
+                {
+                    ConsoleHelper.WriteLine("Look carfully and use all your senses the chest is nearby!", ConsoleColor.DarkCyan);
+                    if (UserEnterAtRoom && !hero.HasShield)
+                    {
+                        ConsoleHelper.WriteLine("Your lost the opportunity to catch the chest!", ConsoleColor.Red);
+                        IsActive = false;
+                        UserEnterAtRoom = false;
+                    }
+                    return true;
+                }
             }
             return false;
         }
