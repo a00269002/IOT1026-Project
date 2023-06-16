@@ -46,7 +46,7 @@
             Location start = PlaceEntrance(map);
             PlaceSword(map, start);
             AddRooms(RoomType.Pit, map);
-            AddRooms(RoomType.Chest, map);
+            AddRooms(RoomType.Chest, map, 0);
             InitializeMonsters(map);
             return start;
         }
@@ -79,10 +79,10 @@
         /// </summary>
         /// <param name="roomType">The RoomType to be added to the map (e.g., Pit).</param>
         /// <param name="map">The Map to which the rooms should be added.</param>
-        /// <param name="multiplier">An optional multiplier to scale the number of rooms to be added (default is 1).</param>
+        /// <param name="multiplier">An optional multiplier to scale the number of rooms to be added (default is 1). Use 0 to add a single room regardless of map size.</param>
         private static void AddRooms(RoomType roomType, Map map, int multiplier = 1)
         {
-            int numRooms = map.Rows * map.Columns * multiplier / ScalingFactor;
+            int numRooms = (multiplier == 0) ? 1 : map.Rows * map.Columns * multiplier / ScalingFactor;
             for (int i = 0; i < numRooms; ++i)
             {
                 map.SetRoomAtLocation(ProceduralGenerator.GetRandomLocation(), roomType);
