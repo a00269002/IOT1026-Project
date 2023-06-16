@@ -62,6 +62,7 @@ namespace MinotaurLabyrinthTest
             Map map = new(0, 0);
 
             chestRoom.Activate(hero, map);
+            hero.HasShield = true;
             Assert.AreEqual(chestRoom.DisplaySense(hero, 0), true);
             Assert.AreEqual(chestRoom.DisplaySense(hero, 1), true);
         }
