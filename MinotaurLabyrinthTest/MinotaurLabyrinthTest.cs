@@ -53,6 +53,18 @@ namespace MinotaurLabyrinthTest
             hero.HasShield = true;
             Assert.AreEqual(hero.HasShield, true);
         }
+
+        [TestMethod]
+        public void ChestRoomHeroDistanceZeroTest()
+        {
+            Chest chestRoom = new();
+            Hero hero = new();
+            Map map = new(0, 0);
+
+            chestRoom.Activate(hero, map);
+            Assert.AreEqual(chestRoom.DisplaySense(hero, 0), true);
+            Assert.AreEqual(chestRoom.DisplaySense(hero, 1), true);
+        }
     }
 
     [TestClass]

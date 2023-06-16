@@ -8,6 +8,9 @@
     // 4. Add documentation and a description of your room (any maybe an image?) to the README.
     public class Chest : Room
     {
+        /// <summary>
+        /// Static constructor for the Chest class.
+        /// </summary>
         static Chest()
         {
             RoomFactory.Instance.Register(RoomType.Chest, () => new Chest());
@@ -17,7 +20,16 @@
         /// <inheritdoc/>
         public override bool IsActive { get; protected set; } = true;
 
+        /// <summary>
+        /// Gets or sets a value indicating whether the user has entered the room.
+        /// </summary>
         public bool UserEnterAtRoom { get; protected set; }
+
+        /// <summary>
+        /// Activates the functionality for the specified hero and map.
+        /// </summary>
+        /// <param name="hero">The hero object.</param>
+        /// <param name="map">The map object.</param>
         public override void Activate(Hero hero, Map map)
         {
             if (IsActive)
@@ -36,6 +48,13 @@
             return IsActive ? new DisplayDetails($"[{Type.ToString()[0]}]", ConsoleColor.Cyan)
                    : base.Display();
         }
+
+        /// <summary>
+        /// Displays the sense information for the specified hero and hero distance.
+        /// </summary>
+        /// <param name="hero">The hero object.</param>
+        /// <param name="heroDistance">The distance of the hero from the chest.</param>
+        /// <returns>True if the sense information is displayed; otherwise, false.</returns>
         public override bool DisplaySense(Hero hero, int heroDistance)
         {
             if (heroDistance == 0)
