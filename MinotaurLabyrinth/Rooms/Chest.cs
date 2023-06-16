@@ -34,11 +34,16 @@
         {
             if (IsActive)
             {
-                hero.CommandList.AddCommand(new List<string>() { "c" }, new GetChestCommand());
-                if (hero.HasChest)
+                // This means the user is standing in the room and they have opened the chest (Room will be activated again after the hero executes the OpenChestCommand)
+                if (hero.HasShield)
                 {
-                    hero.CommandList.AddCommand(new List<string>() { "open" }, new OpenChestCommand());
+                    ConsoleHelper.WriteLine("After you retrieve the shield from the chest, it disintegrates before your eyes!", ConsoleColor.DarkBlue);
+                    hero.CommandList.RemoveCommand(typeof(OpenChestCommand));
                     IsActive = false;
+                }
+                else
+                {
+                    hero.CommandList.AddCommand(new List<string>() { "o", "open chest" }, new OpenChestCommand());
                 }
             }
         }
@@ -59,28 +64,42 @@
         {
             if (heroDistance == 0)
             {
-                UserEnterAtRoom = true;
-                if (hero.HasShield)
+                if (IsActive)
                 {
-                    ConsoleHelper.WriteLine("Chest open successfully!!!", ConsoleColor.Green);
-                    Console.WriteLine("You managed to open the chest! You find a strong sturdy shield");
+                    // If it is the first time the hero has entered the room & the room is active.
+                    if (!UserEnterAtRoom)
+                    {
+                        ConsoleHelper.WriteLine("You should pick the chest! Don't lost your opportunity", ConsoleColor.DarkCyan);
+                        UserEnterAtRoom = true;
+                    }
+                    // Else the user has previously entered the room, so deactivate the room and indicate they lost their opportunity.
+                    else
+                    {
+                        ConsoleHelper.WriteLine("A wave of sadness passes over you as you watch the chest and all its contents disintegrate before your eyes.", ConsoleColor.Red);
+                        IsActive = false;
+                    }
+                    return true;
                 }
                 else
                 {
-                    ConsoleHelper.WriteLine("You should pick the chest! Don't lost your opportunity", ConsoleColor.DarkCyan);
+                    ConsoleHelper.WriteLine("The dusty remnants of a once sturdy chest are all that remain in this room", ConsoleColor.Gray);
                 }
-                return true;
             }
             else if (heroDistance == 1)
             {
                 if (IsActive)
                 {
-                    ConsoleHelper.WriteLine("Look carfully and use all your senses the chest is nearby!", ConsoleColor.DarkCyan);
-                    if (UserEnterAtRoom && !hero.HasShield)
+                    // If the room is active but the user has not yet entered the room
+                    if (!UserEnterAtRoom)
                     {
-                        ConsoleHelper.WriteLine("Your lost the opportunity to catch the chest!", ConsoleColor.Red);
+                        ConsoleHelper.WriteLine("Look carfully and use all your senses the chest is nearby!", ConsoleColor.DarkCyan);
+                    }
+                    // Else the user entered the room and left without opening the chest
+                    else
+                    {
+                        ConsoleHelper.WriteLine("A profound sense of regret passes over you as you feel you lost your opportunity to loot the chest!", ConsoleColor.DarkCyan);
                         IsActive = false;
-                        UserEnterAtRoom = false;
+                        hero.CommandList.RemoveCommand(typeof(OpenChestCommand));
                     }
                     return true;
                 }
