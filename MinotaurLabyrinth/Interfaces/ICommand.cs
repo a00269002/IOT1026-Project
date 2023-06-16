@@ -18,7 +18,7 @@
         }
     }
 
-    public class OpenChestCommand : ISecretCommand
+    public class OpenChestCommand : ICommand
     {
         public void Execute(Hero hero, Map map)
         {
