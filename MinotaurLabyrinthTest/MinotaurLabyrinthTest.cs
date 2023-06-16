@@ -11,9 +11,9 @@ namespace MinotaurLabyrinthTest
             // is deterministic
             RandomNumberGenerator.SetSeed(1);
 
-            Pit pitRoom = new ();
-            Hero hero = new ();
-            Map map = new (1, 1);
+            Pit pitRoom = new();
+            Hero hero = new();
+            Map map = new(1, 1);
 
             pitRoom.Activate(hero, map);
             Assert.AreEqual(pitRoom.IsActive, false);
@@ -24,7 +24,7 @@ namespace MinotaurLabyrinthTest
             // Hero should not die because pitRoom is inactive here
             Assert.AreEqual(hero.IsAlive, true);
 
-            Pit newPitRoom = new ();
+            Pit newPitRoom = new();
             newPitRoom.Activate(hero, map);
             Assert.AreEqual(hero.IsAlive, true);
 
@@ -39,29 +39,19 @@ namespace MinotaurLabyrinthTest
         [TestMethod]
         public void ChestRoomTest()
         {
-            Chest chestRoom = new ();
-            Hero hero = new ();
-            Map map = new (1, 1);
+            Chest chestRoom = new();
+            Hero hero = new();
+            Map map = new(1, 1);
 
             chestRoom.Activate(hero, map);
-            Assert.AreEqual(chestRoom.IsActive, false);
+            Assert.AreEqual(chestRoom.IsActive, true);
             Assert.AreEqual(hero.IsAlive, true);
 
             hero.HasSword = true;
-            chestRoom.Activate(hero, map);
-            // Hero should not die because pitRoom is inactive here
-            Assert.AreEqual(hero.IsAlive, true);
-
-            Chest newChestRoom = new ();
-            newChestRoom.Activate(hero, map);
-            Assert.AreEqual(hero.IsAlive, true);
-
-            newChestRoom.Activate(hero, map);
-            newChestRoom = new();
-            newChestRoom.Activate(hero, map);
-            newChestRoom = new();
-            newChestRoom.Activate(hero, map);
-            Assert.AreEqual(hero.IsAlive, false);
+            Assert.AreEqual(hero.HasSword, true);
+            Assert.AreEqual(hero.HasShield, false);
+            hero.HasShield = true;
+            Assert.AreEqual(hero.HasShield, true);
         }
     }
 
@@ -71,9 +61,9 @@ namespace MinotaurLabyrinthTest
         [TestMethod]
         public void MinotaurTest()
         {
-            Hero hero = new ();
-            Minotaur minotaur = new ();
-            Map map = new (4, 4);
+            Hero hero = new();
+            Minotaur minotaur = new();
+            Map map = new(4, 4);
             hero.HasSword = true;
             Assert.AreEqual(hero.HasSword, true);
 

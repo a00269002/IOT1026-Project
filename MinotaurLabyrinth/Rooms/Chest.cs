@@ -28,10 +28,6 @@
                     hero.CommandList.AddCommand(new List<string>() { "open" }, new OpenChestCommand());
                     IsActive = false;
                 }
-                else
-                {
-                    //ConsoleHelper.WriteLine("Your lost the opportunity to catch the chest!", ConsoleColor.Red);
-                }
             }
         }
         /// <inheritdoc/>
