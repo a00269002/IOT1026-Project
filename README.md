@@ -12,7 +12,6 @@
 </p>
 
 # IOT1026-Project
-Write a description of your `Room` and `Monster` class here.
 
 # Chest Room
 
@@ -21,7 +20,9 @@ Write a description of your `Room` and `Monster` class here.
 ![_0590055a-1f63-4dc3-bd52-e3d0ce37981b](https://github.com/a00269002/IOT1026-Project/assets/123220170/81a452e1-58f3-410f-8d91-bf51b7a1c85a)
 
 **References:** 
+
 Bing Image Creator
+
 Chat GPT support documentation style        
         
 [Assignment Instructions](docs/instructions.md)  
