@@ -23,9 +23,15 @@ namespace MinotaurLabyrinth
         }
         public void Move(Hero hero, Map map)
         {
-            map.GetRoomAtLocation(_location).RemoveMonster();
-            _location = new Location(_location.Row + 1, _location.Column);
-            map.GetRoomAtLocation(_location).AddMonster(this);
+            var potentialLocation = new Location(_location.Row + 1, _location.Column);
+            //If the potential location is valid (on the map & room location is inactive)
+            if (potentialLocation.Row < map.Rows && !map.GetRoomAtLocation(potentialLocation).IsActive)
+            {
+                //Then do our previous logic, otherwise do nothing
+                map.GetRoomAtLocation(_location).RemoveMonster();
+                _location = new Location(_location.Row + 1, _location.Column);
+                map.GetRoomAtLocation(_location).AddMonster(this);
+            }
         }
 
         public override bool DisplaySense(Hero hero, int heroDistance)
