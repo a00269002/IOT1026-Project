@@ -99,7 +99,7 @@ namespace MinotaurLabyrinthTest
             Hero hero = new();
             var gelLocation = new Location(1,1);
             GelatinousCube gel = new(gelLocation);
-            Map map = new Map(4, 4);
+            Map map = new (4, 4);
             map.GetRoomAtLocation(new(3, 3)).AddMonster(gel);
             gel.Move(hero, map);
             var expectedLocation = new Location (2, 1);
@@ -115,10 +115,10 @@ namespace MinotaurLabyrinthTest
         [TestMethod]
         public void GelMoveToActiveTest()
         {
-            Hero hero = new Hero();
+            Hero hero = new ();
             var gelLocation = new Location(1, 1);
             GelatinousCube gel = new(gelLocation);
-            Map map = new Map(4, 4);
+            Map map = new (4, 4);
             map.GetRoomAtLocation(gelLocation).AddMonster(gel);
             map.SetRoomAtLocation(new Location(2, 1), RoomType.Pit);
             gel.Move(hero, map);
