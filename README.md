@@ -25,6 +25,9 @@ But the challenges do not end there. The Gelatinous Cube, a creature attuned to 
 
 Prepare yourself for an extraordinary journey filled with twists, surprises, and strategic choices. Can you outwit the Minotaur, outmaneuver the Gelatinous Cube, retrieve the sword, and escape with your life? Only the bravest heroes will triumph in this enthralling game of chance, strategy, and survival.
 
+
+![_199d2332-906e-40a3-96d6-aa247e9c2b55](https://github.com/a00269002/IOT1026-Project/assets/123220170/8d1711b8-f281-4eb0-8576-5a8bf48c3a9f)
+
 # Chest Room
 
  In the realm of the game, the hero embarks on a treacherous journey, encountering various challenges along the way. In one particular room, a mysterious chest beckons, offering potential rewards. The hero stands at a crossroads, contemplating whether to seize the chest or refrain from doing so. However, the game's mechanics dictate that if the hero decides against taking the chest, the opportunity to acquire a valuable shield is forever lost. The chest remains tightly shut until the hero musters the courage to claim it. Once the hero opens the chest, a pivotal moment unfolds as they reveal its contents—a powerful sword capable of vanquishing the fearsome Minotaur. Equipped with this newfound weapon, the hero is poised to confront the Minotaur and unleash its full potential, heralding a significant advantage in the battle that lies ahead.
